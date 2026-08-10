@@ -1,0 +1,317 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Anggota 01 | Group 7</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+
+<body class="detail-body">
+
+
+    <!-- ==============================
+         BACKGROUND
+    =============================== -->
+
+    <div class="detail-background">
+
+        <div class="detail-orb detail-orb-1"></div>
+        <div class="detail-orb detail-orb-2"></div>
+
+    </div>
+
+
+
+    <!-- ==============================
+         NAVBAR
+    =============================== -->
+
+    <header class="navbar">
+
+
+        <!-- LOGO -->
+
+        <div class="nav-logo">
+
+            <div class="nav-logo-icon">
+                G
+            </div>
+
+            <div>
+
+                <h1>
+                    GROUP <span>BARUDAK WARAWIRI</span>
+                </h1>
+
+                <p>
+                    Member Profile
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- MENU -->
+
+        <nav class="nav-menu">
+
+            <a href="beranda.html">
+                ⌂ Beranda
+            </a>
+
+            <a
+                href="anggota.html"
+                class="active"
+            >
+                👥 Anggota
+            </a>
+
+        </nav>
+
+
+
+        <!-- LOGOUT -->
+
+        <button
+            class="logout-button"
+            onclick="logout()"
+        >
+            ↪ Logout
+        </button>
+
+
+    </header>
+
+
+
+    <!-- ==============================
+         KONTEN UTAMA
+    =============================== -->
+
+    <main class="detail-container">
+
+
+        <!-- KEMBALI -->
+
+        <a
+            href="anggota.html"
+            class="detail-back"
+        >
+            ← Kembali ke Anggota
+        </a>
+
+
+
+        <!-- ==========================
+             PROFILE
+        =========================== -->
+
+        <section class="profile-detail">
+
+
+            <!-- FOTO -->
+
+            <div class="profile-photo-area">
+
+                <div class="profile-photo">
+
+                    <img
+                        src="c:\Users\USER\Downloads\123.png"
+                        alt="Foto Anggota 01"
+                    >
+
+                </div>
+
+
+                <div class="profile-number">
+                    MEMBER 01
+                </div>
+
+            </div>
+
+
+
+            <!-- INFORMASI -->
+
+            <div class="profile-content">
+
+
+                <span class="profile-label">
+                    GROUP BARUDAK WARAWIRI
+                </span>
+
+
+                <h2>
+                    Anggota 01
+                </h2>
+
+
+                <p class="profile-description">
+
+                    Tulis deskripsi singkat
+                    tentang Anggota 01
+                    di sini.
+
+                </p>
+
+
+
+                <div class="profile-divider"></div>
+
+
+
+                <!-- BIODATA -->
+
+                <div class="biodata-grid">
+
+
+                    <!-- NAMA -->
+
+                    <div class="biodata-item">
+
+                        <span>
+                            Nama
+                        </span>
+
+                        <strong>
+                            CANDRA
+                        </strong>
+
+                    </div>
+
+
+
+                    <!-- TEMPAT LAHIR -->
+
+                    <div class="biodata-item">
+
+                        <span>
+                            Tempat, Tanggal Lahir
+                        </span>
+
+                        <strong>
+                            Bandung, 22-Mei-2005
+                        </strong>
+
+                    </div>
+
+
+
+                    <!-- ALAMAT -->
+
+                    <div class="biodata-item">
+
+                        <span>
+                            Alamat
+                        </span>
+
+                        <strong>
+                            Jl.Gegerkalong Hilir
+                        </strong>
+
+                    </div>
+
+
+
+                    <!-- HOBI -->
+
+                    <div class="biodata-item">
+
+                        <span>
+                            Hobi
+                        </span>
+
+                        <strong>
+                            Coli
+                        </strong>
+
+                    </div>
+
+
+                    <!-- INSTAGRAM -->
+
+                    <div class="biodata-item">
+
+                        <span>
+                            INSTAGRAM
+                        </span>
+
+                        <strong>
+                            @ini.canzz
+                        </strong>
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- ==============================
+         FOOTER
+    =============================== -->
+
+    <footer class="home-footer">
+
+
+        <div class="footer-logo">
+
+            GROUP <span>BARUDAK WARAWIRI</span>
+
+        </div>
+
+
+        <p>
+            © 2026 Group BARUDAK WARAWIRI
+        </p>
+
+
+    </footer>
+
+
+
+    <!-- ==============================
+         JAVASCRIPT
+    =============================== -->
+
+    <script>
+
+        function logout() {
+
+            localStorage.removeItem("isLoggedIn");
+
+            window.location.href = "index.html";
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>
+```

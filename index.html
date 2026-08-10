@@ -1,0 +1,293 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login | Profil Anggota</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <main class="login-page">
+
+        <!-- Background Decoration -->
+        <div class="background-shape shape-1"></div>
+        <div class="background-shape shape-2"></div>
+        <div class="background-shape shape-3"></div>
+
+        <!-- Login Card -->
+        <section class="login-card">
+
+            <!-- Logo -->
+            <div class="logo">
+                <div class="logo-icon">
+                    <span>G</span>
+                </div>
+
+                <div class="logo-text">
+                    <h1>BARUDAK<span>WARAWIRI</span></h1>
+                    <p>Member Profile</p>
+                </div>
+            </div>
+
+            <!-- Header -->
+            <div class="login-header">
+                <h2>Selamat Datang 👋</h2>
+                <p>
+                    Silakan masuk untuk melihat
+                    profil anggota grup.
+                </p>
+            </div>
+
+            <!-- Login Form -->
+            <form id="loginForm">
+
+                <!-- Username -->
+                <div class="input-group">
+                    <label for="username">Username</label>
+
+                    <div class="input-box">
+                        <span class="input-icon">👤</span>
+
+                        <input
+                            type="text"
+                            id="username"
+                            name="username"
+                            placeholder="Masukkan username"
+                            autocomplete="username"
+                            required
+                        >
+                    </div>
+                </div>
+
+                <!-- Password -->
+                <div class="input-group">
+                    <label for="password">Password</label>
+
+                    <div class="input-box">
+                        <span class="input-icon">🔒</span>
+
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            placeholder="Masukkan password"
+                            autocomplete="current-password"
+                            required
+                        >
+
+                        <button
+                            type="button"
+                            class="show-password"
+                            id="togglePassword"
+                            aria-label="Tampilkan password"
+                        >
+                            👁
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Remember Me -->
+                <div class="login-options">
+                    <label class="remember">
+                        <input type="checkbox" id="remember">
+                        <span>Ingat saya</span>
+                    </label>
+                </div>
+
+                <!-- Login Message -->
+                <div id="loginMessage" class="login-message"></div>
+
+                <!-- Login Button -->
+                <button type="submit" class="login-button">
+                    <span>Masuk</span>
+                    <span class="button-arrow">→</span>
+                </button>
+
+            </form>
+
+            <!-- Footer -->
+            <div class="login-footer">
+                <p>© 2026 GROUP BARUDAK WARAWIRI • Member Profile</p>
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script>
+
+        const loginForm = document.getElementById("loginForm");
+        const usernameInput = document.getElementById("username");
+        const passwordInput = document.getElementById("password");
+        const togglePassword = document.getElementById("togglePassword");
+        const loginMessage = document.getElementById("loginMessage");
+        const rememberCheckbox = document.getElementById("remember");
+
+
+        /*
+        ==========================================
+        DATA LOGIN
+        ==========================================
+
+        Username dan password tidak ditampilkan
+        pada halaman website.
+        */
+
+        const validUsername = "admin";
+        const validPassword = "12345";
+
+
+        /*
+        ==========================================
+        SHOW / HIDE PASSWORD
+        ==========================================
+        */
+
+        togglePassword.addEventListener("click", function () {
+
+            if (passwordInput.type === "password") {
+
+                passwordInput.type = "text";
+                togglePassword.textContent = "🙈";
+
+            } else {
+
+                passwordInput.type = "password";
+                togglePassword.textContent = "👁";
+
+            }
+
+        });
+
+
+        /*
+        ==========================================
+        PROSES LOGIN
+        ==========================================
+        */
+
+        loginForm.addEventListener("submit", function (event) {
+
+            event.preventDefault();
+
+            const username = usernameInput.value.trim();
+            const password = passwordInput.value;
+
+
+            // Bersihkan pesan
+            loginMessage.textContent = "";
+            loginMessage.className = "login-message";
+
+
+            // Cek username dan password
+            if (
+                username === validUsername &&
+                password === validPassword
+            ) {
+
+                // Simpan status login
+                localStorage.setItem(
+                    "isLoggedIn",
+                    "true"
+                );
+
+
+                // Simpan username jika "Ingat saya" dicentang
+                if (rememberCheckbox.checked) {
+
+                    localStorage.setItem(
+                        "rememberUser",
+                        username
+                    );
+
+                } else {
+
+                    localStorage.removeItem(
+                        "rememberUser"
+                    );
+
+                }
+
+
+                // Pesan berhasil
+                loginMessage.textContent =
+                    "Login berhasil. Mengalihkan...";
+
+                loginMessage.classList.add("success");
+
+
+                // Masuk ke halaman beranda
+                setTimeout(function () {
+
+                    window.location.href =
+                        "beranda.html";
+
+                }, 1000);
+
+
+            } else {
+
+                // Pesan gagal
+                loginMessage.textContent =
+                    "Username atau password salah.";
+
+                loginMessage.classList.add("error");
+
+
+                // Animasi form
+                loginForm.classList.add("shake");
+
+
+                setTimeout(function () {
+
+                    loginForm.classList.remove("shake");
+
+                }, 500);
+
+            }
+
+        });
+
+
+        /*
+        ==========================================
+        LOAD USERNAME TERSIMPAN
+        ==========================================
+        */
+
+        window.addEventListener(
+            "DOMContentLoaded",
+            function () {
+
+                const savedUser =
+                    localStorage.getItem("rememberUser");
+
+
+                if (savedUser) {
+
+                    usernameInput.value =
+                        savedUser;
+
+                    rememberCheckbox.checked =
+                        true;
+
+                }
+
+            }
+        );
+
+    </script>
+
+</body>
+</html>
+```
